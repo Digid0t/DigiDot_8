@@ -215,7 +215,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 600vh;
+            height: 850vh;
             z-index: 20;
         }
 
@@ -228,7 +228,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 30px;
+            padding: 0 10px;
         }
 
         /* Decorative Signs */
@@ -242,26 +243,17 @@
             box-shadow: 
                 6px 6px 0 rgba(0,0,0,0.5),
                 inset 0 2px 0 rgba(255,255,255,0.2);
-            margin-bottom: 10px;
+            margin-bottom: 0;
             font-size: 0.9rem;
             letter-spacing: 2px;
             position: relative;
-        }
-
-        .sign-post::before {
-            content: '🎯';
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.2rem;
         }
 
         .sign-pole {
             width: 12px;
             height: 80px;
             background: linear-gradient(to right, #3E2723 0%, #4E342E 50%, #3E2723 100%);
-            margin: -5px auto 0;
+            margin: -30px auto 20px;
             box-shadow: 2px 0 4px rgba(0,0,0,0.3);
         }
 
@@ -471,12 +463,13 @@
             inset: 0;
             background: rgba(0, 0, 0, 0.95);
             z-index: 2000;
-            align-items: center;
-            justify-content: center;
             flex-direction: column;
             color: #fff;
             padding: 30px;
+            padding-bottom: 100px;
             animation: fadeIn 0.3s ease;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
 
         @keyframes fadeIn {
@@ -635,6 +628,11 @@
                 padding: 20px;
             }
 
+            .checkpoint {
+                gap: 25px;
+                padding: 15px 10px;
+            }
+
             .info-card h2 {
                 font-size: 1.1rem;
             }
@@ -714,18 +712,34 @@
             transition: opacity 1s ease;
         }
 
+        #loading-screen img {
+            position: absolute;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        #loading-screen .loading-spinner,
+        #loading-screen h2 {
+            position: relative;
+            z-index: 2;
+        }
+
         #loading-screen.hidden {
             opacity: 0;
             pointer-events: none;
         }
 
         .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 6px solid rgba(255,255,255,0.2);
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(255,255,255,0.3);
             border-top-color: #FFB300;
             border-radius: 50%;
             animation: spin 1s linear infinite;
+            box-shadow: 0 0 20px rgba(255,179,0,0.5);
         }
 
         @keyframes spin {
@@ -738,8 +752,9 @@
 
     <!-- Loading Screen -->
     <div id="loading-screen">
+        <img src="https://raw.githubusercontent.com/Digid0t/DigiDot_8/main/muni_1.png" alt="GMTW Loading">
         <div class="loading-spinner"></div>
-        <h2 style="margin-top: 30px; font-size: 1.2rem;">GMTW 2026 LÄDT...</h2>
+        <h2 style="margin-top: 30px; font-size: 1.3rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.6);">GMTW 2026 LÄDT...</h2>
     </div>
 
     <!-- HUD -->
@@ -759,8 +774,9 @@
         </div>
 
         <div class="controls-panel">
-            <button class="btn-interact" id="jump-btn">⬆️ SPRUNG</button>
+            <a href="/cdn-cgi/l/email-protection#cca7a3a2b8ada7b88caba1b8bbfefcfefae2a8a9f3bfb9aea6a9afb8f18da2a1a9a0a8b9a2abe9fefc8b81989be9fefcfefcfefaeaaea3a8b5f184ada0a0a3e9fe8fe9fc8de9fc8da5afa4e9fefca1e98fffe98efaafa4b8a9e9fefca1a5afa4e9fefcaba9bea2a9e9fefcaae98fffe98e8fbee9fefca8adbfe9fefc8b81989be9fefcfefcfefae9fefcada2a1a9a0a8a9a2e2" class="btn-interact" id="registration-btn" style="text-decoration: none; display: inline-block;">🎪 ANMELDUNG</a>
             <button class="btn-interact" id="inventory-btn">🎒 PACKLISTE</button>
+            <a href="https://raw.githack.com/ErSieCode/1Rad/main/Einrad_mini_game.html" target="_blank" class="btn-interact" id="game-btn" style="text-decoration: none; display: none;">🎮 PLAY THE GAME</a>
         </div>
     </div>
 
@@ -782,13 +798,13 @@
     <div class="content-scroll-wrapper">
         
         <!-- START -->
-        <div class="checkpoint" style="top: 30vh;">
-            <div style="font-size: 4rem; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));">🎪</div>
+        <div class="checkpoint" style="top: 15vh;">
+            <div style="font-size: 3.5rem; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));">🎪</div>
             <div class="info-card readable-text visible">
                 <h2>🎮 Willkommen zum GMTW 2026!</h2>
-                <p><strong>📅 17. - 21. April 2026</strong><br>
+                <p><strong>📅 03. - 06. April 2026</strong><br>
                 📍 Campingplatz Hohensyburg am Hengsteysee</p>
-                <p>Mach dich bereit für das Einrad-Event des Jahres! Scroll nach unten oder nutze die <strong>Leertaste</strong> zum Springen.</p>
+                <p>Mach dich bereit für das Einrad-Event des Jahres! Scroll nach unten und entdecke alle Highlights.</p>
                 <em>🎯 Tipp: Sammle alle Items in deiner Packliste!</em>
             </div>
         </div>
@@ -815,7 +831,7 @@
         </div>
 
         <!-- MUNI -->
-        <div class="checkpoint" style="top: 190vh;">
+        <div class="checkpoint" style="top: 210vh;">
             <div style="font-size: 4rem;">🌲🌲🌲</div>
             <div class="sign-post">Muni Zone</div>
             <div class="sign-pole"></div>
@@ -839,7 +855,7 @@
         </div>
 
         <!-- TRIAL -->
-        <div class="checkpoint" style="top: 280vh;">
+        <div class="checkpoint" style="top: 310vh;">
             <div style="font-size: 4rem;">🧱⚖️</div>
             <div class="sign-post">Trial Park</div>
             <div class="sign-pole"></div>
@@ -863,7 +879,7 @@
         </div>
 
         <!-- CAMP LIFE -->
-        <div class="checkpoint" style="top: 370vh;">
+        <div class="checkpoint" style="top: 410vh;">
             <div style="font-size: 4rem;">⛺🔥</div>
             <div class="sign-post">Camp Life</div>
             <div class="sign-pole"></div>
@@ -883,7 +899,7 @@
         </div>
 
         <!-- DOWNHILL -->
-        <div class="checkpoint" style="top: 460vh;">
+        <div class="checkpoint" style="top: 510vh;">
             <div style="font-size: 4rem;">⛰️💨</div>
             <div class="sign-post">Massen-Downhill</div>
             <div class="sign-pole"></div>
@@ -903,7 +919,7 @@
         </div>
 
         <!-- ABREISE -->
-        <div class="checkpoint" style="top: 540vh;">
+        <div class="checkpoint" style="top: 610vh;">
             <div style="font-size: 4rem;">👋🏡</div>
             <div class="sign-post">Auf Wiedersehen</div>
             <div class="sign-pole"></div>
@@ -921,15 +937,27 @@
             </div>
         </div>
 
+        <!-- MEDIA -->
+        <div class="checkpoint" style="top: 710vh;">
+            <div style="font-size: 4rem; text-align: center;">📸🎥</div>
+            <div class="info-card readable-text visible" style="text-align: center;">
+                <h2>📺 Media Galerie</h2>
+                <p style="font-size: 1rem;">Erlebe die Highlights vom letzten Jahr!</p>
+                <a href="https://raw.githack.com/Digid0t/DigiDot_8/main/gmtw_media.html" target="_blank" class="btn-interact" style="margin-top: 20px; text-decoration: none; display: inline-block;">
+                    🎬 ZUR MEDIA GALERIE
+                </a>
+            </div>
+        </div>
+
         <!-- FINISH -->
-        <div class="checkpoint" style="top: 580vh;">
-            <div style="font-size: 6rem;">🏁</div>
-            <div class="info-card readable-text reveal" style="text-align: center;">
+        <div class="checkpoint" style="top: 810vh;">
+            <div style="font-size: 6rem; text-align: center;">🏁</div>
+            <div class="info-card readable-text visible" style="text-align: center;">
                 <h2>🎉 Ziel erreicht!</h2>
-                <p style="font-size: 1.1rem;">Wir sehen uns vom <strong>17. - 21. April 2026</strong><br>am Hengsteysee!</p>
+                <p style="font-size: 1.1rem;">Wir sehen uns vom <strong>03. - 06. April 2026</strong><br>am Hengsteysee!</p>
                 <p style="margin-top: 20px;">
                     <strong>Weitere Infos & Anmeldung:</strong><br>
-                    📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="167f78707956717b626124262420387273">[email&#160;protected]</a><br>
+                    📧 <a href="mailto:kontakt@gmtw2026.de?subject=Anmeldung%20GMTW%202026&body=Hallo%2C%0A%0Aich%20m%C3%B6chte%20mich%20gerne%20f%C3%BCr%20das%20GMTW%202026%20anmelden." style="color: #1B5E20; text-decoration: underline;">kontakt@gmtw2026.de</a><br>
                     🌐 www.gmtw2026.de
                 </p>
                 <button class="btn-interact" id="restart-btn" style="margin-top: 20px;">
@@ -949,7 +977,7 @@
         </button>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // ============================================
         // GAME ENGINE & CORE SYSTEMS
         // ============================================
@@ -967,7 +995,6 @@
 
         // State
         let lastY = 0;
-        let isJumping = false;
         let achievements = new Set();
         let isNightMode = false;
 
@@ -1013,7 +1040,7 @@
         // INVENTORY SYSTEM
         // ============================================
         const items = [
-            {icon: '🚴', name: 'Einrad'},
+            {icon: '⭕', name: 'Einrad'},
             {icon: '⛑️', name: 'Helm'},
             {icon: '🧤', name: 'Handschuhe'},
             {icon: '👟', name: 'Schuhe'},
@@ -1073,39 +1100,6 @@
         // ============================================
         // PARTICLE EFFECTS
         // ============================================
-        function createParticles(x, y) {
-            const colors = ['#FFB300', '#FF6F00', '#4CAF50', '#2196F3'];
-            const particleCount = 8;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                const size = 5 + Math.random() * 10;
-                particle.style.width = size + 'px';
-                particle.style.height = size + 'px';
-                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                
-                particle.style.left = x + 'px';
-                particle.style.top = y + 'px';
-                
-                const angle = (Math.PI * 2 * i) / particleCount;
-                const velocity = 50 + Math.random() * 50;
-                const px = Math.cos(angle) * velocity;
-                const py = Math.sin(angle) * velocity;
-                
-                particle.style.setProperty('--px', px + 'px');
-                particle.style.setProperty('--py', py + 'px');
-                
-                document.body.appendChild(particle);
-                
-                setTimeout(() => {
-                    if (particle.parentNode) {
-                        particle.parentNode.removeChild(particle);
-                    }
-                }, 1500);
-            }
-        }
 
         // ============================================
         // ACHIEVEMENT SYSTEM
@@ -1130,42 +1124,35 @@
         }
 
         // ============================================
-        // JUMP MECHANICS
+        // FINAL INFO POPUP
         // ============================================
-        function jump() {
-            if (isJumping) return;
+        function showFinalInfo() {
+            const popup = document.createElement('div');
+            popup.className = 'achievement-popup';
+            popup.style.maxWidth = '400px';
+            popup.style.padding = '25px';
+            popup.innerHTML = `
+                <h3 style="margin-bottom: 15px;">🎉 Ziel erreicht!</h3>
+                <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                    <strong>Wir sehen uns vom 03. - 06. April 2026</strong><br>
+                    am Hengsteysee!
+                </p>
+                <p style="font-size: 0.85rem; line-height: 1.5; margin-bottom: 10px;">
+                    <strong>Weitere Infos & Anmeldung:</strong><br>
+                    📧 <a href="mailto:kontakt@gmtw2026.de?subject=Anmeldung%20GMTW%202026&body=Hallo%2C%0A%0Aich%20m%C3%B6chte%20mich%20gerne%20f%C3%BCr%20das%20GMTW%202026%20anmelden." style="color: #fff; text-decoration: underline;">kontakt@gmtw2026.de</a><br>
+                    🌐 www.gmtw2026.de
+                </p>
+            `;
+            document.body.appendChild(popup);
             
-            isJumping = true;
-            const jumpHeight = 100;
-            const jumpDuration = 500;
-            
-            // Store original bottom value
-            const originalBottom = parseInt(getComputedStyle(hero).bottom) || 100;
-            const targetBottom = originalBottom + jumpHeight;
-            
-            // Jump up
-            hero.style.transition = `bottom ${jumpDuration/2}ms cubic-bezier(0.33, 1, 0.68, 1)`;
-            hero.style.bottom = targetBottom + 'px';
-            
-            // Slight tilt
-            heroImg.style.transition = `transform ${jumpDuration/2}ms ease-out`;
-            heroImg.style.transform = 'rotate(-8deg)';
-            
-            // Particles at jump location
-            createParticles(window.innerWidth / 2, window.innerHeight - originalBottom);
-            
-            // Jump down
             setTimeout(() => {
-                hero.style.transition = `bottom ${jumpDuration/2}ms cubic-bezier(0.32, 0, 0.67, 0)`;
-                hero.style.bottom = originalBottom + 'px';
-                heroImg.style.transform = 'rotate(0deg)';
-                
+                popup.classList.add('hiding');
                 setTimeout(() => {
-                    isJumping = false;
-                    hero.style.transition = '';
-                    heroImg.style.transition = '';
-                }, jumpDuration/2);
-            }, jumpDuration/2);
+                    if (popup.parentNode) {
+                        popup.parentNode.removeChild(popup);
+                    }
+                }, 500);
+            }, 8000);
         }
 
         // ============================================
@@ -1190,11 +1177,29 @@
             bgGround.style.backgroundPositionX = `-${y * 0.5}px`;
 
             // Riding Animation
-            if (speed > 1 && !isJumping) {
+            if (speed > 1) {
                 hero.classList.add('is-riding');
-            } else if (!isJumping) {
+            } else {
                 hero.classList.remove('is-riding');
             }
+
+            // Dynamic Hero Positioning based on scroll
+            let heroLeftPosition = 50; // Default center
+            if (progress < 10) {
+                heroLeftPosition = 50; // Center at start
+            } else if (progress >= 10 && progress < 30) {
+                heroLeftPosition = 20; // Left
+            } else if (progress >= 30 && progress < 50) {
+                heroLeftPosition = 80; // Right
+            } else if (progress >= 50 && progress < 70) {
+                heroLeftPosition = 20; // Left
+            } else if (progress >= 70 && progress < 90) {
+                heroLeftPosition = 80; // Right
+            } else if (progress >= 90) {
+                heroLeftPosition = 50; // Center at end
+            }
+            hero.style.left = heroLeftPosition + '%';
+            hero.style.transition = 'left 1s ease-out';
 
             // Content Reveal
             cards.forEach(card => {
@@ -1232,7 +1237,20 @@
             
             if (progress > 95 && !achievements.has('finished')) {
                 showAchievement('🏁 Ziel erreicht!', 'Du hast die gesamte Strecke gemeistert!');
+                setTimeout(() => {
+                    showFinalInfo();
+                }, 3500);
                 achievements.add('finished');
+            }
+
+            // Game Button at 100%
+            if (progress >= 100 && !achievements.has('game-unlocked')) {
+                const gameBtn = document.getElementById('game-btn');
+                if (gameBtn) {
+                    gameBtn.style.display = 'inline-block';
+                    showAchievement('🎮 Bonus freigeschaltet!', 'Du kannst jetzt das Einrad-Spiel spielen!');
+                }
+                achievements.add('game-unlocked');
             }
 
             lastY = y;
@@ -1263,7 +1281,6 @@
         // ============================================
         
         // Button Listeners
-        document.getElementById('jump-btn').addEventListener('click', jump);
         document.getElementById('inventory-btn').addEventListener('click', toggleInventory);
         document.getElementById('close-inventory-btn').addEventListener('click', toggleInventory);
         document.getElementById('restart-btn').addEventListener('click', function() {
@@ -1272,10 +1289,6 @@
 
         // Keyboard
         window.addEventListener('keydown', function(e) {
-            if (e.code === 'Space' || e.key === ' ') {
-                e.preventDefault();
-                jump();
-            }
             if (e.key === 'Escape') {
                 const inv = document.getElementById('inventory');
                 if (inv.style.display === 'flex') {
@@ -1283,26 +1296,6 @@
                 }
             }
         });
-
-        // Touch support for mobile
-        let touchStartY = 0;
-        let touchStartTime = 0;
-
-        document.addEventListener('touchstart', function(e) {
-            touchStartY = e.touches[0].clientY;
-            touchStartTime = Date.now();
-        }, {passive: true});
-
-        document.addEventListener('touchend', function(e) {
-            const touchEndY = e.changedTouches[0].clientY;
-            const touchDuration = Date.now() - touchStartTime;
-            const touchDistance = touchStartY - touchEndY;
-            
-            // Quick swipe up = jump
-            if (touchDistance > 50 && touchDuration < 300) {
-                jump();
-            }
-        }, {passive: true});
 
         // ============================================
         // INITIALIZATION
