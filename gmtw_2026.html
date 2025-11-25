@@ -775,7 +775,7 @@
 
     <!-- Hero Character -->
     <div id="hero-stage">
-        <img src="waschbaer_einrad.webp" alt="GMTL Waschbär auf Einrad" id="hero-img">
+        <img src="https://raw.githubusercontent.com/Digid0t/DigiDot_8/main/waschbaer_%20einrad.png" alt="GMTL Waschbär auf Einrad" id="hero-img">
     </div>
 
     <!-- Content Checkpoints -->
@@ -929,7 +929,7 @@
                 <p style="font-size: 1.1rem;">Wir sehen uns vom <strong>17. - 21. April 2026</strong><br>am Hengsteysee!</p>
                 <p style="margin-top: 20px;">
                     <strong>Weitere Infos & Anmeldung:</strong><br>
-                    📧 info@gmtw2026.de<br>
+                    📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="167f78707956717b626124262420387273">[email&#160;protected]</a><br>
                     🌐 www.gmtw2026.de
                 </p>
                 <button class="btn-interact" id="restart-btn" style="margin-top: 20px;">
@@ -949,7 +949,7 @@
         </button>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // ============================================
         // GAME ENGINE & CORE SYSTEMS
         // ============================================
@@ -1328,13 +1328,16 @@
             }, 2500);
         }
 
-        // Start when DOM is ready
+        // ============================================
+        // START THE APPLICATION
+        // ============================================
+        
+        // Wait for DOM to be ready, then initialize
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', init);
         } else {
             init();
         }
-
     </script>
 </body>
 </html>
